@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class UI_GaugeBar : UI_Base
 {
     private Image gaugeBar;
-    public float current = 10f;
+    public float current = 0;
+    public bool autoIncrese = true;
+    public float autoIncreseValue = 5f;
     enum Images
     {
         Background,
@@ -27,23 +29,30 @@ public class UI_GaugeBar : UI_Base
     private void Update()
     {
         GaugeBarUpdate();//test¿ë
+        if (autoIncrese)
+        {
+            current += Time.deltaTime * autoIncreseValue;
+        }
+        if (current > 100)
+        {
+            autoIncrese = false;
+            current = 100f;
+            Debug.Log("stress gauge is full");
+        }
     }
-
-    public void GaugeBarUpdate()
+    private void GaugeBarUpdate()
     {
         gaugeBar.fillAmount = current / 100;
     }
 
-    public void GaugeUp(float temp)
+    public void GaugeUp(float value)
     {
-        current += temp;
-        GaugeBarUpdate();
+        current += value;
     }
 
-    public void GaugeDown(float temp)
+    public void GaugeDown(float value)
     {
-        current -= temp;
-        GaugeBarUpdate();
+        current -= value;
     }
 
 }
