@@ -30,9 +30,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5953492981776516641}
-  - {fileID: 4173827777197846298}
   - {fileID: 6104411261316312839}
   - {fileID: 4616776775355749305}
+  - {fileID: 4173827777197846298}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -52,6 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9fefb87d684e9c4aa097fe4ae9b9b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadLine: 0
+  timeLeft: 0
+  orderName: 
 --- !u!1 &2129768034159487400
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

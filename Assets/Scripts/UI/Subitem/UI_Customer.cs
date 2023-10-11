@@ -24,6 +24,7 @@ public class UI_Customer : UI_Base
 
     public int deadLine;
     public int timeLeft;
+    public string orderName;
     public override void Init()
     {
         Bind<Text>(typeof(Texts));
@@ -35,7 +36,7 @@ public class UI_Customer : UI_Base
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Init();
         
@@ -51,7 +52,7 @@ public class UI_Customer : UI_Base
     {
         while (timeLeft > 0)
         {
-            transform.GetChild(2).gameObject.GetComponent<Text>().text = ConvertSecondsToMinutesAndSeconds(timeLeft);
+            Get<Text>((int)Texts.Deadline).text = ConvertSecondsToMinutesAndSeconds(timeLeft);
             timeLeft--;
             yield return new WaitForSeconds(1);
         }
@@ -70,6 +71,7 @@ public class UI_Customer : UI_Base
     private void OnEnable()
     {
         timeLeft = deadLine;
+        Get<Text>((int)Texts.Order).text = orderName;
         StartCoroutine(CountDeadLine());
     }
 }

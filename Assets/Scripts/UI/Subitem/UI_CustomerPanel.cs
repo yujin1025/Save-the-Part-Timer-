@@ -32,7 +32,6 @@ public class UI_CustomerPanel : UI_Base
         Init();
     }
 
-
     IEnumerator CustomerTest()
     {
         while(true)
@@ -46,7 +45,7 @@ public class UI_CustomerPanel : UI_Base
         float randomNumber = Random.Range(0f, 100f);
         GameObject firstEmpty = null;
 
-        if (raito == null) raito = new float[] { 15, 30, 45, 60, 70, 80, 85, 90, 95, 100 };
+        if (raito == null) raito = new float[] { 15, 30, 45, 60, 70, 80, 90, 95, 100 };
 
         for (int i = 0; i < 4; i++)
         {
@@ -64,48 +63,48 @@ public class UI_CustomerPanel : UI_Base
 
         firstEmpty.GetComponent<UI_Customer>().timeLeft = deadLine;
         firstEmpty.GetComponent<UI_Customer>().deadLine = deadLine;
-        firstEmpty.SetActive(true);
-        
 
         if (randomNumber < raito[0])
         {
-            firstEmpty.transform.GetChild(3).gameObject.GetComponent<Text>().text = "치즈 피자";
+            firstEmpty.GetComponent<UI_Customer>().orderName = "치즈 피자";
         }
         else if (randomNumber < raito[1])
         {
-            firstEmpty.transform.GetChild(3).gameObject.GetComponent<Text>().text = "페퍼로니 피자";
+            firstEmpty.GetComponent<UI_Customer>().orderName = "페퍼로니 피자";
         }
         else if (randomNumber < raito[2])
         {
-            firstEmpty.transform.GetChild(3).gameObject.GetComponent<Text>().text = "베이컨포테이토 피자";
+            firstEmpty.GetComponent<UI_Customer>().orderName = "베이컨포테이토 피자";
         }
         else if (randomNumber < raito[3])
         {
-            firstEmpty.transform.GetChild(3).gameObject.GetComponent<Text>().text = "불고기 피자";
+            firstEmpty.GetComponent<UI_Customer>().orderName = "불고기 피자";
         }
         else if (randomNumber < raito[4])
         {
-            firstEmpty.transform.GetChild(3).gameObject.GetComponent<Text>().text = "옥수수 피자";
+            firstEmpty.GetComponent<UI_Customer>().orderName = "옥수수 피자";
         }
         else if (randomNumber < raito[5])
         {
-            firstEmpty.transform.GetChild(3).gameObject.GetComponent<Text>().text = "콤비네이션 피자";
+            firstEmpty.GetComponent<UI_Customer>().orderName = "콤비네이션 피자";
         }
         else if (randomNumber < raito[6])
         {
-            firstEmpty.transform.GetChild(3).gameObject.GetComponent<Text>().text = "페퍼로니&포테이토 반반 피자";
+            firstEmpty.GetComponent<UI_Customer>().orderName = "페퍼로니&포테이토 반반 피자";
         }
         else if (randomNumber < raito[7])
         {
-            firstEmpty.transform.GetChild(3).gameObject.GetComponent<Text>().text = "불고기&옥수수 반반 피자";
+            firstEmpty.GetComponent<UI_Customer>().orderName = "불고기&옥수수 반반 피자";
         }
         else if (randomNumber < raito[8])
         {
-            firstEmpty.transform.GetChild(3).gameObject.GetComponent<Text>().text = "포테이토&불고기 반반 피자";
+            firstEmpty.GetComponent<UI_Customer>().orderName = "포테이토&불고기 반반 피자";
         }
         else
         {
-            firstEmpty.transform.GetChild(3).gameObject.GetComponent<Text>().text = "? 피자";
+            firstEmpty.GetComponent<UI_Customer>().orderName = "??? 피자";
         }
+        firstEmpty.SetActive(true);
+        firstEmpty.transform.SetAsFirstSibling();
     }
 }
