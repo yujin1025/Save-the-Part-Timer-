@@ -32,11 +32,6 @@ public class UI_CustomerPanel : UI_Base
         Init();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     IEnumerator CustomerTest()
     {
@@ -51,7 +46,7 @@ public class UI_CustomerPanel : UI_Base
         float randomNumber = Random.Range(0f, 100f);
         GameObject firstEmpty = null;
 
-        if (raito == null) raito = new float[] { 10, 20, 30, 40, 50, 60, 65, 70, 75, 80 };
+        if (raito == null) raito = new float[] { 15, 30, 45, 60, 70, 80, 85, 90, 95, 100 };
 
         for (int i = 0; i < 4; i++)
         {
@@ -67,8 +62,10 @@ public class UI_CustomerPanel : UI_Base
             return;
         }
 
-        firstEmpty.SetActive(true);
         firstEmpty.GetComponent<UI_Customer>().timeLeft = deadLine;
+        firstEmpty.GetComponent<UI_Customer>().deadLine = deadLine;
+        firstEmpty.SetActive(true);
+        
 
         if (randomNumber < raito[0])
         {

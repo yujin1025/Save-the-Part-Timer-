@@ -22,6 +22,7 @@ public class UI_Customer : UI_Base
         CustomerBackGround
     }
 
+    public int deadLine;
     public int timeLeft;
     public override void Init()
     {
@@ -40,12 +41,6 @@ public class UI_Customer : UI_Base
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnButtonClicked(PointerEventData data)
     {
         //피자 완성시 false 이게끔 수정 필요
@@ -56,8 +51,8 @@ public class UI_Customer : UI_Base
     {
         while (timeLeft > 0)
         {
-            timeLeft--;
             transform.GetChild(2).gameObject.GetComponent<Text>().text = ConvertSecondsToMinutesAndSeconds(timeLeft);
+            timeLeft--;
             yield return new WaitForSeconds(1);
         }
         gameObject.SetActive(false);
@@ -74,6 +69,7 @@ public class UI_Customer : UI_Base
 
     private void OnEnable()
     {
+        timeLeft = deadLine;
         StartCoroutine(CountDeadLine());
     }
 }
