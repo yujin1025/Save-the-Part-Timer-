@@ -45,14 +45,21 @@ public class UI_GaugeBar : UI_Base
         gaugeBar.fillAmount = current / 100;
     }
 
-    public void GaugeUp(float value)
+    /// <summary>
+    /// 스트레스 상승 속도를 value 만큼 증가
+    /// </summary>
+    /// <param name="value"></param>
+    public void GaugeSpeedUp(float value)
     {
-        current += value;
+        autoIncreseValue += value;
     }
-
-    public void GaugeDown(float value)
+    /// <summary>
+    /// 스트레스 상승 속도를 value 만큼 감소
+    /// </summary>
+    /// <param name="value"></param>
+    public void GaugeSpeedDown(float value)
     {
-        current -= value;
+        autoIncreseValue -= value;
     }
 
 }

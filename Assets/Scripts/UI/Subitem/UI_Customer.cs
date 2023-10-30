@@ -23,7 +23,7 @@ public class UI_Customer : UI_Base
     }
 
     public int deadLine;
-    public int timeLeft;
+    public int time;
     public string orderName;
     public override void Init()
     {
@@ -32,6 +32,7 @@ public class UI_Customer : UI_Base
         Bind<Image>(typeof(Images));
 
         Get<Button>((int)Buttons.AcceptButton).gameObject.BindEvent(OnButtonClicked);
+        time = 0;
 
     }
 
@@ -46,17 +47,18 @@ public class UI_Customer : UI_Base
     {
         //피자 완성시 false 이게끔 수정 필요
         gameObject.SetActive(false);
+        if (time >= deadLine) transform.parent.parent.Find("StressBar").GetComponent<UI_GaugeBar>().GaugeSpeedDown(1);
     }
 
     IEnumerator CountDeadLine()
     {
-        while (timeLeft > 0)
+        while (true)
         {
-            Get<Text>((int)Texts.Deadline).text = ConvertSecondsToMinutesAndSeconds(timeLeft);
-            timeLeft--;
+            Get<Text>((int)Texts.Deadline).text = ConvertSecondsToMinutesAndSeconds(time);
+            time++;
+            if (time == deadLine) transform.parent.parent.Find("StressBar").GetComponent<UI_GaugeBar>().GaugeSpeedUp(1);
             yield return new WaitForSeconds(1);
         }
-        gameObject.SetActive(false);
 
     }
 
@@ -70,7 +72,6 @@ public class UI_Customer : UI_Base
 
     private void OnEnable()
     {
-        timeLeft = deadLine;
         Get<Text>((int)Texts.Order).text = orderName;
         StartCoroutine(CountDeadLine());
     }

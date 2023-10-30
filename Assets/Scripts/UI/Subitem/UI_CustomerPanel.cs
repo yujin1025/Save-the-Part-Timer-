@@ -61,7 +61,6 @@ public class UI_CustomerPanel : UI_Base
             return;
         }
 
-        firstEmpty.GetComponent<UI_Customer>().timeLeft = deadLine;
         firstEmpty.GetComponent<UI_Customer>().deadLine = deadLine;
 
         if (randomNumber < raito[0])
