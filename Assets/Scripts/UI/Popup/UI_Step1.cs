@@ -4,19 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_Step3 : UI_Popup
+public class UI_Step1 : UI_Popup
 {
     enum Buttons
     {
-        Ingredient1,
-        Ingredient2,
-        Ingredient3,
-        Ingredient4,
-        Ingredient5,
-        Ingredient6,
-        Ingredient7,
-        Ingredient8,
-        Ingredient9
+        Sauce1,
+        Sauce2,
+        Sauce3,
+        Cheese
     }
     public override void Init()
     {
