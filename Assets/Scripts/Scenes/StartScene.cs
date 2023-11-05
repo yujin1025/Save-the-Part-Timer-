@@ -9,10 +9,17 @@ public class StartScene : BaseScene
         throw new System.NotImplementedException();
     }
 
+    protected override void Init()
+    {
+        base.Init();
+        Managers mag = Managers.s_managersProperty;
+        Managers.uiManagerProperty.ShowSceneUI<UI_Start>();
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-        Managers mag = Managers.s_managersProperty;
+        Init();
     }
 
     // Update is called once per frame

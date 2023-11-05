@@ -46,4 +46,15 @@ public class Util
         }
         return null;
     }
+
+    public static string GetStringFromList(List<string> stringList)
+    {
+        return string.Join(";", stringList.ToArray());
+    }
+
+    public static List<string> GetListFromString(string key)
+    {
+        string combinedString = PlayerPrefs.GetString(key);
+        return new List<string>(combinedString.Split(';'));
+    }
 }
