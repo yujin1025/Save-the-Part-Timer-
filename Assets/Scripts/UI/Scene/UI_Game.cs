@@ -30,7 +30,7 @@ public class UI_Game : UI_Scene
         Bind<GameObject>(typeof(GameObjects));
         Bind<Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
-
+        Get<Text>((int)Texts.RemainingMoney).text = $"¿‹∞Ì : {Managers.s_managersProperty.moneyProperty.ToString()}";
         Managers.uiManagerProperty.ShowPopupUI<UI_Step1>();
     }
 }

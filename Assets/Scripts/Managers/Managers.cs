@@ -10,12 +10,16 @@ public class Managers : MonoBehaviour
     string unlockedRecipesKey = "UnlockedRecipes";
     string availablePizzasKey = "AvailablePizzas";
     string moneyKey = "BankBalance";
+    string dDayKey = "DDay";
 
     public string playerNameProperty { get { return PlayerPrefs.GetString(playerNameKey, "Guest"); } set { PlayerPrefs.SetString(playerNameKey, value); } }
     public bool isFirstGameProperty { get { if (PlayerPrefs.GetInt(firstGameKey, 1) == 1) return true; else return false; } set { if (value == true) PlayerPrefs.SetInt(firstGameKey, 1); else PlayerPrefs.SetInt(firstGameKey, 0); } }
     public List<string> unlockedRecipesProperty { get { return Util.GetListFromString(PlayerPrefs.GetString(unlockedRecipesKey, "")); } set { PlayerPrefs.SetString(unlockedRecipesKey, Util.GetStringFromList(value)); } }
     public List<string> availablePizzasProperty { get { return Util.GetListFromString(PlayerPrefs.GetString(availablePizzasKey, "")); } set { PlayerPrefs.SetString(availablePizzasKey, Util.GetStringFromList(value)); } }
     public int moneyProperty { get { return PlayerPrefs.GetInt(moneyKey, 0); } set { PlayerPrefs.SetInt(moneyKey, value); } }
+    //계약 일수 넣어야 함
+    public int dDayProperty { get { return PlayerPrefs.GetInt(dDayKey, 30); } set { PlayerPrefs.SetInt(dDayKey, value); } }
+
 
     static Managers s_managers;
     public static Managers s_managersProperty { get { Init(); return s_managers; } }

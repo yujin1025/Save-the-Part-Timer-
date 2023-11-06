@@ -9,11 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 71e1b4c0e9922bc458b5f765b4c38915
+    path: Assets/Scenes/Start.unity
+    guid: ca956f51792db3e4c85cc9d9dfcef471
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: eeaee716e4269eb4ca4eff71ad4a9ccf
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 52f8d4ee22f285543917c29f33cc45b9
   - enabled: 1
     path: Assets/Scenes/RecipeBook.unity
     guid: f7fc4d84107e0f24fae024f3476f307a
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 71e1b4c0e9922bc458b5f765b4c38915
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 4cb428234c7854c49aaaf14a0b69c1c7, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 80cd8f09a82e68a40b546d8fe7c9df92, type: 2}
