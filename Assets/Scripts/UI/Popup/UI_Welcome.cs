@@ -14,6 +14,7 @@ public class UI_Welcome : UI_Popup
     enum Buttons
     {
         ResetButton,
+        GameStartButton
     }
     public override void Init()
     {
@@ -21,6 +22,7 @@ public class UI_Welcome : UI_Popup
         Bind<Button>(typeof(Buttons));
         Get<Text>((int)Texts.UserNameText).text = $"{Managers.s_managersProperty.playerNameProperty} ดิ";
         Get<Button>((int)Buttons.ResetButton).gameObject.BindEvent(OnResetButtonClicked);
+        Get<Button>((int)Buttons.GameStartButton).gameObject.BindEvent(OnGameStartButtonClicked);
     }
 
     // Start is called before the first frame update
@@ -40,5 +42,12 @@ public class UI_Welcome : UI_Popup
         Managers.s_managersProperty.playerNameProperty = "Guest";
         Managers.uiManagerProperty.SafeClosePopupUIOnTop(this);
         if (Managers.s_managersProperty.playerNameProperty == "Guest") Managers.uiManagerProperty.ShowPopupUI<UI_DoInput>();
+    }
+
+    void OnGameStartButtonClicked(PointerEventData data)
+    {
+        Managers.uiManagerProperty.SafeClosePopupUIOnTop(this);
+        if (Managers.s_managersProperty.isFirstGameProperty == true) Managers.sceneManagerEXProperty.LoadScene(Defines.Scene.Intro);
+        else Managers.sceneManagerEXProperty.LoadScene(Defines.Scene.Lobby);
     }
 }

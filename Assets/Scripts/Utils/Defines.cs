@@ -9,6 +9,7 @@ public class Defines
     {
         Unknown,
         Start,
+        Intro,
         Lobby,
         RecipeBook,
         Game,
