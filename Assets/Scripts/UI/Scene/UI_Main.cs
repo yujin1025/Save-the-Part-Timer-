@@ -42,10 +42,16 @@ public class UI_Main : UI_Scene
         Get<Text>((int)Texts.MoneyText).text = $"{Managers.s_managersProperty.moneyProperty.ToString()} 원";
         Get<Text>((int)Texts.DDayText).text = $"D-{Managers.s_managersProperty.dDayProperty.ToString()}";
         Get<Button>((int)Buttons.Reset).gameObject.BindEvent(OnResetButtonClicked);
+        Get<Button>((int)Buttons.Start).gameObject.BindEvent(OnStartButtonClicked);
     }
     void OnResetButtonClicked(PointerEventData data)
     {
         //재개약 Day 정해야함
         Managers.s_managersProperty.dDayProperty = 30;
+    }
+
+    void OnStartButtonClicked(PointerEventData data)
+    {
+        Managers.sceneManagerEXProperty.LoadScene(Defines.Scene.Game);
     }
 }

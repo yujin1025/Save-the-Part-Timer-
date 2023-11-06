@@ -6,7 +6,7 @@ public class MainScene : BaseScene
 {
     public override void Clear()
     {
-        throw new System.NotImplementedException();
+        //Clear 구현해야 함
     }
 
     protected override void Init()
