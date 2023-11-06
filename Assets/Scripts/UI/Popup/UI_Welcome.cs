@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI_Welcome : UI_Popup
@@ -10,10 +11,16 @@ public class UI_Welcome : UI_Popup
         WelcomeText,
         UserNameText
     }
+    enum Buttons
+    {
+        ResetButton,
+    }
     public override void Init()
     {
         Bind<Text>(typeof(Texts));
+        Bind<Button>(typeof(Buttons));
         Get<Text>((int)Texts.UserNameText).text = $"{Managers.s_managersProperty.playerNameProperty} ดิ";
+        Get<Button>((int)Buttons.ResetButton).gameObject.BindEvent(OnResetButtonClicked);
     }
 
     // Start is called before the first frame update
@@ -26,5 +33,12 @@ public class UI_Welcome : UI_Popup
     void Update()
     {
         
+    }
+
+    void OnResetButtonClicked(PointerEventData data)
+    {
+        Managers.s_managersProperty.playerNameProperty = "Guest";
+        Managers.uiManagerProperty.SafeClosePopupUIOnTop(this);
+        if (Managers.s_managersProperty.playerNameProperty == "Guest") Managers.uiManagerProperty.ShowPopupUI<UI_DoInput>();
     }
 }

@@ -32,10 +32,6 @@ public class UI_PressToStart : UI_Popup
     void OnBackGroundClicked(PointerEventData data)
     {
         Managers.uiManagerProperty.SafeClosePopupUIOnTop(this);
-    }
-
-    private void OnDestroy()
-    {
         if (Managers.s_managersProperty.playerNameProperty == "Guest")
         {
             UI_Popup tmp = Managers.uiManagerProperty.ShowPopupUI<UI_DoInput>();

@@ -42,9 +42,20 @@ public class UI_DoInput : UI_Popup
         
     }
 
+    private void OnDestroy()
+    {
+        
+    }
+
     void OnSaveButtonClicked(PointerEventData data)
     {
+        if (Get<Text>((int)Texts.NameInput).text == "Guest")
+        {
+            Debug.Log("Guest 로는 이름을 설정 불가");
+            return;
+        }
         Managers.s_managersProperty.playerNameProperty = Get<Text>((int)Texts.NameInput).text;
         Managers.uiManagerProperty.SafeClosePopupUIOnTop(this);
+        Managers.uiManagerProperty.ShowPopupUI<UI_Welcome>();
     }
 }
