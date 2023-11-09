@@ -9,7 +9,7 @@ public class Managers : MonoBehaviour
     string firstGameKey = "IsFirstGame";
     string unlockedRecipesKey = "UnlockedRecipes";
     string availablePizzasKey = "AvailablePizzas";
-    string moneyKey = "BankBalance";
+    string moneyKey = "Money";
     string dDayKey = "DDay";
 
     public string playerNameProperty { get { return PlayerPrefs.GetString(playerNameKey, "Guest"); } set { PlayerPrefs.SetString(playerNameKey, value); } }
