@@ -75,6 +75,19 @@ public class UIManager
         return popup;
     }
 
+    public T ShowPopupUIUnderParent<T>(GameObject parantObject, string name = null) where T : UI_Popup
+    {
+        //Prefab 이름을 넣어주지 않았다면 Script 이름을 그대로 가져옴
+        if (string.IsNullOrEmpty(name)) name = typeof(T).Name;
+
+        GameObject go = Managers.resourceManagerProperty.Instantate($"UI/Popup/{name}");
+        T popup = Util.GetOrAddComponent<T>(go);
+        m_popupStack.Push(popup);
+
+        go.transform.SetParent(parantObject.transform);
+        return popup;
+    }
+
     public void SafeClosePopupUIOnTop(UI_Popup popup)
     {
         if (m_popupStack.Count == 0) return;

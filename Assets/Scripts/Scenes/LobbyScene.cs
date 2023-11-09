@@ -13,7 +13,7 @@ public class LobbyScene : BaseScene
     {
         base.Init();
         Managers managers = Managers.s_managersProperty;
-        
+        Managers.uiManagerProperty.ShowSceneUI<UI_Lobby>();
     }
 
     // Start is called before the first frame update

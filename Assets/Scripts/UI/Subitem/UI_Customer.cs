@@ -45,8 +45,14 @@ public class UI_Customer : UI_Base
 
     void OnButtonClicked(PointerEventData data)
     {
+        Managers.uiManagerProperty.ShowPopupUIUnderParent<UI_Step1>(this.transform.parent.parent.gameObject);
+
         //피자 완성시 false 이게끔 수정 필요
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+
+        //임의로 무슨 버튼 클릭했는지 알기위해 색상 변경
+        Get<Image>((int)Images.CustomerBackGround).color = new Color(1, 0, 0);
+
         if (time >= deadLine) transform.parent.parent.Find("StressBar").GetComponent<UI_GaugeBar>().GaugeSpeedDown(1);
     }
 
