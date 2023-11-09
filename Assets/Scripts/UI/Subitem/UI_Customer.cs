@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 public class UI_Customer : UI_Base
 {
@@ -45,15 +46,25 @@ public class UI_Customer : UI_Base
 
     void OnButtonClicked(PointerEventData data)
     {
-        Managers.uiManagerProperty.ShowPopupUIUnderParent<UI_Step1>(this.transform.parent.parent.gameObject);
-
-        //피자 완성시 false 이게끔 수정 필요
-        //gameObject.SetActive(false);
-
-        //임의로 무슨 버튼 클릭했는지 알기위해 색상 변경
+        UI_Game ui_game = transform.parent.parent.gameObject.GetComponent<UI_Game>();
         Get<Image>((int)Images.CustomerBackGround).color = new Color(1, 0, 0);
 
-        if (time >= deadLine) transform.parent.parent.Find("StressBar").GetComponent<UI_GaugeBar>().GaugeSpeedDown(1);
+        //이름을 전달
+        ui_game.orderName = orderName;
+
+        //소스 정답 전달
+        ui_game.sauceAnswer[0] = Managers.pizzaRecipeList.ReturnStepData(orderName, 0).Contains<string>("토마토 소스");
+        ui_game.sauceAnswer[1] = Managers.pizzaRecipeList.ReturnStepData(orderName, 0).Contains<string>("마요네즈 소스");
+        ui_game.sauceAnswer[2] = Managers.pizzaRecipeList.ReturnStepData(orderName, 0).Contains<string>("구운 양파 소스");
+
+        //테이블을 활성화
+        UI_Step1 ui_step1 = ui_game.Get<GameObject>((int)UI_Game.GameObjects.UI_Step1).GetComponent<UI_Step1>();
+        ui_step1.Get<GameObject>((int)UI_Step1.GameObjects.TableBlocker).SetActive(false);
+
+        if (time >= deadLine)
+        {
+            ui_game.Get<GameObject>((int)UI_Game.GameObjects.StressBar).GetComponent<UI_GaugeBar>().GaugeSpeedDown(1);
+        }
     }
 
     IEnumerator CountDeadLine()
@@ -62,7 +73,11 @@ public class UI_Customer : UI_Base
         {
             Get<Text>((int)Texts.Deadline).text = ConvertSecondsToMinutesAndSeconds(time);
             time++;
-            if (time == deadLine) transform.parent.parent.Find("StressBar").GetComponent<UI_GaugeBar>().GaugeSpeedUp(1);
+            if (time == deadLine)
+            {
+                UI_Game ui_game = transform.parent.parent.gameObject.GetComponent<UI_Game>();
+                ui_game.Get<GameObject>((int)UI_Game.GameObjects.StressBar).GetComponent<UI_GaugeBar>().GaugeSpeedUp(1);
+            }
             yield return new WaitForSeconds(1);
         }
 

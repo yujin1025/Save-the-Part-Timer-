@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 8905104629106455325}
   - component: {fileID: 6279855078831821501}
   m_Layer: 5
-  m_Name: Blocker2
+  m_Name: CheeseBlocker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,8 +154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 172.04132}
-  m_SizeDelta: {x: 0, y: -344.08}
+  m_AnchoredPosition: {x: -0.000030517578, y: -329.68}
+  m_SizeDelta: {x: 0, y: -659.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8905104629106455325
 CanvasRenderer:
@@ -195,6 +195,81 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &559101038456914521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6538173446553141768}
+  - component: {fileID: 8430004524281341119}
+  - component: {fileID: 6642139475032241766}
+  m_Layer: 5
+  m_Name: TableBlocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6538173446553141768
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559101038456914521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9209712115498134244}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -126, y: -125}
+  m_SizeDelta: {x: 998.73, y: 998.74}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8430004524281341119
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559101038456914521}
+  m_CullTransparentMesh: 1
+--- !u!114 &6642139475032241766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559101038456914521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1661238679163675394
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +283,7 @@ GameObject:
   - component: {fileID: 8788682199966203411}
   - component: {fileID: 6842590477176498126}
   m_Layer: 5
-  m_Name: Sauce2
+  m_Name: MayonnaiseSauce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,7 +402,7 @@ GameObject:
   - component: {fileID: 7673409006591371117}
   - component: {fileID: 6916216489916267905}
   m_Layer: 5
-  m_Name: Blocker1
+  m_Name: SauceBlocker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,8 +424,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 205.95}
+  m_SizeDelta: {x: 0, y: -411.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7673409006591371117
 CanvasRenderer:
@@ -403,7 +478,7 @@ GameObject:
   - component: {fileID: 2592369003451712348}
   - component: {fileID: 6631416622352087990}
   m_Layer: 5
-  m_Name: Sauce3
+  m_Name: OnionSauce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -543,6 +618,7 @@ RectTransform:
   m_Children:
   - {fileID: 2347309460971681903}
   - {fileID: 3626186641700604205}
+  - {fileID: 6538173446553141768}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -644,11 +720,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2614560320244566777}
-  - {fileID: 1214048110014643053}
   - {fileID: 8214353633974418442}
   - {fileID: 2517725773146189944}
   - {fileID: 4790084373622488064}
   - {fileID: 6310437113428985200}
+  - {fileID: 1214048110014643053}
   m_Father: {fileID: 9209712115498134244}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -707,7 +783,7 @@ GameObject:
   - component: {fileID: 3669145251775466961}
   - component: {fileID: 225336091031826014}
   m_Layer: 5
-  m_Name: Sauce1
+  m_Name: TomatoSauce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
