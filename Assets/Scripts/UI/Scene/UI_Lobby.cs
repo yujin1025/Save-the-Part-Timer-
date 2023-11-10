@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI_Lobby : UI_Scene
 {
-    public float delayTime = 3f; //일단 3초로 
+    float delayTime = 3f; //일단 3초로 
     float timer = 0f;
-    public int index = 0;
-    public bool test = true;
+    int index = 0;
+    bool CoroutineRunning = false;
 
     private string[] talkData = {
         "“드디어…! 대학생이다!”",
@@ -37,11 +38,6 @@ public class UI_Lobby : UI_Scene
         Panel,
     }
 
-    enum Buttons
-    {
-        Clicked
-    }
-
     enum Texts
     {
         TalkText
@@ -56,25 +52,28 @@ public class UI_Lobby : UI_Scene
         base.Init();
         Bind<GameObject>(typeof(GameObjects));
         Bind<Text>(typeof(Texts));
-        Bind<Button>(typeof(Buttons));
 
-        Get<Button>((int)Buttons.Clicked).gameObject.BindEvent(OnButtonClicked);
         Get<Text>((int)Texts.TalkText).text = talkData[index];
         index++;
     }
-    public void OnButtonClicked(PointerEventData data)
-    {
 
-    }
 
-    
-    
     void Update()
     {
-        
-        if(test)
+        if (!CoroutineRunning)
         {
-            if (index < 12)
+            if (index == 12)
+            {
+                StartCoroutine(ResultInputNameCoroutine());
+            }
+
+            else if (index == 13)
+            {
+                Get<Text>((int)Texts.TalkText).text = Managers.s_managersProperty.playerNameProperty + talkData[index];
+                index++;
+            }
+
+            else if (index < talkData.Length)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -95,50 +94,37 @@ public class UI_Lobby : UI_Scene
                 }
             }
 
-            else if (index == 12)
-            {
-                ResultInputName();
-                test = false;
-            }
-
-            //update문에 빠져나왔을때 어떻게 해야될지, doinput 어떻게 쓸지 등 생각하기
-            /*
-            else if (index == 13)
-            {
-                Get<Text>((int)Texts.TalkText).text = Managers.s_managersProperty.playerNameProperty + ", " + talkData[index];
-                index++;
-            }
-
             else
             {
-                Get<Text>((int)Texts.TalkText).text = talkData[index];
-                index++;
-            }*/
+                Debug.Log("대화가 종료되었습니다.");
+                //SceneManager.LoadScene("Main");
+                CoroutineRunning = false;
+            }
+
+        }
+    }
+
+    IEnumerator ResultInputNameCoroutine()
+    {
+        CoroutineRunning = true;
+        
+        if (!Managers.uiManagerProperty.IsPopupOpen<UI_DoInput>())
+        {
+            if (Managers.s_managersProperty.playerNameProperty == "Guest")
+            {
+                UI_Popup tmp = Managers.uiManagerProperty.ShowPopupUI<UI_DoInput>();
+            }
+            else
+            {
+                UI_Popup tmp = Managers.uiManagerProperty.ShowPopupUI<UI_Welcome>();
+            }
+            
+            yield return new WaitUntil(() => !Managers.uiManagerProperty.IsPopupOpen<UI_DoInput>() &&
+                                          !Managers.uiManagerProperty.IsPopupOpen<UI_Welcome>());
+
         }
 
-        /*
-        if (!test)
-        {
-            if (index == 13)
-            {
-                Debug.Log("출력");
-                Get<Text>((int)Texts.TalkText).text = Managers.s_managersProperty.playerNameProperty + ", " + talkData[index];
-                index++;
-            }
-
-            else if (index == 14)
-            {
-                Get<Text>((int)Texts.TalkText).text = talkData[index];
-                index++;
-            }
-        }*/
-
-    }
-
-    public void ResultInputName()
-    {
-        Managers.uiManagerProperty.ShowPopupUI<UI_DoInput>();
         index++;
+        CoroutineRunning = false;
     }
-    
 }

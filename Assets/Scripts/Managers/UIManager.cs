@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class UIManager
 {
@@ -87,6 +88,17 @@ public class UIManager
         go.transform.SetParent(parantObject.transform);
         return popup;
     }
+
+    public bool IsPopupOpen<T>() where T : UI_Popup
+    {
+        foreach (var popup in m_popupStack)
+        {
+            if (popup is T)
+                return true;
+        }
+        return false;
+    }
+
 
     public void SafeClosePopupUIOnTop(UI_Popup popup)
     {

@@ -9,8 +9,8 @@ public class Defines
     {
         Unknown,
         Start,
-        Intro,
         Lobby,
+        Main,
         RecipeBook,
         Game,
         BreakTime,
