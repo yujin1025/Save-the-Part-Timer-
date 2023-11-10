@@ -36,6 +36,8 @@ public class UI_Lobby : UI_Scene
     {
         Background,
         Panel,
+        Employee,
+        Manager,
     }
 
     enum Texts
@@ -53,6 +55,9 @@ public class UI_Lobby : UI_Scene
         Bind<GameObject>(typeof(GameObjects));
         Bind<Text>(typeof(Texts));
 
+        Get<GameObject>((int)GameObjects.Employee).SetActive(false);
+        Get<GameObject>((int)GameObjects.Manager).SetActive(false);
+
         Get<Text>((int)Texts.TalkText).text = talkData[index];
         index++;
     }
@@ -64,11 +69,13 @@ public class UI_Lobby : UI_Scene
         {
             if (index == 12)
             {
+                ShowCharacterImg();
                 StartCoroutine(ResultInputNameCoroutine());
             }
 
             else if (index == 13)
             {
+                ShowCharacterImg();
                 Get<Text>((int)Texts.TalkText).text = Managers.s_managersProperty.playerNameProperty + talkData[index];
                 index++;
             }
@@ -77,6 +84,7 @@ public class UI_Lobby : UI_Scene
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    ShowCharacterImg();
                     Get<Text>((int)Texts.TalkText).text = talkData[index];
                     index++;
                     timer = 0f;
@@ -88,6 +96,7 @@ public class UI_Lobby : UI_Scene
                     if (timer >= delayTime)
                     {
                         timer = 0f;
+                        ShowCharacterImg();
                         Get<Text>((int)Texts.TalkText).text = talkData[index];
                         index++;
                     }
@@ -127,4 +136,25 @@ public class UI_Lobby : UI_Scene
         index++;
         CoroutineRunning = false;
     }
+
+    void ShowCharacterImg()
+    {
+        if (index >= 0 && index <= 5 || index == 8 || index >= 14)
+        {
+            Get<GameObject>((int)GameObjects.Employee).SetActive(true);
+            Get<GameObject>((int)GameObjects.Manager).SetActive(false);
+        }
+        else if (index == 9 || index == 13)
+        {
+            Get<GameObject>((int)GameObjects.Employee).SetActive(false);
+            Get<GameObject>((int)GameObjects.Manager).SetActive(true);
+        }
+        else if (index >= 10 && index <= 12)
+        {
+            Get<GameObject>((int)GameObjects.Employee).SetActive(true);
+            Get<GameObject>((int)GameObjects.Manager).SetActive(true);
+        }
+    }
+
+
 }
