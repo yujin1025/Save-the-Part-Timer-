@@ -51,7 +51,6 @@ public class UI_Step1 : UI_Popup
         Get<GameObject>((int)GameObjects.SauceBlocker).SetActive(false);
         Get<Button>((int)Buttons.Cheese).gameObject.BindEvent(OnCheeseClicked);
 
-        //아직 customer 피자 데이터 없어서 이런식으로 구현
         Get<Button>((int)Buttons.TomatoSauce).gameObject.BindEvent(OnTomatoClicked);
         Get<Button>((int)Buttons.MayonnaiseSauce).gameObject.BindEvent(OnMayonnaiseClicked);
         Get<Button>((int)Buttons.OnionSauce).gameObject.BindEvent(OnOnionClicked);

@@ -6,10 +6,16 @@ using UnityEngine.UI;
 public class UI_CustomerPanel : UI_Base
 {
     GameObject[] customers;
+    Sprite[] customersIcon;
     
     public override void Init()
     {
         customers = new GameObject[4];
+        customersIcon = new Sprite[5];
+        for (int i = 0; i < customers.Length; i++)
+        {
+            customersIcon[i] = Managers.resourceManagerProperty.Load<Sprite>($"Images/UI/Game/Customer/Customer{i + 1}");
+        }
 
         foreach (Transform child in transform)
             Managers.resourceManagerProperty.Destroy(child.gameObject);
@@ -17,7 +23,6 @@ public class UI_CustomerPanel : UI_Base
         for (int i = 0; i < 4; i++)
         {
             GameObject pizzaIndex = Managers.uiManagerProperty.MakeSubItem<UI_Customer>(transform).gameObject;
-            pizzaIndex.GetComponent<RectTransform>().localScale = Vector3.one;
             pizzaIndex.SetActive(false);
             pizzaIndex.name = $"CustomerInfo{i}";
             customers[i] = pizzaIndex;
@@ -60,7 +65,10 @@ public class UI_CustomerPanel : UI_Base
             Debug.Log("CustomerFull");
             return;
         }
-
+        
+        int selectedCustomerNum = Random.Range(0, 5);
+        firstEmpty.GetComponent<UI_Customer>().customerIconNumber = selectedCustomerNum;
+        firstEmpty.GetComponent<UI_Customer>().Get<Image>((int)UI_Customer.Images.CustomerIcon).sprite = customersIcon[selectedCustomerNum];
         firstEmpty.GetComponent<UI_Customer>().deadLine = deadLine;
 
         if (randomNumber < raito[0])
@@ -104,6 +112,6 @@ public class UI_CustomerPanel : UI_Base
             firstEmpty.GetComponent<UI_Customer>().orderName = "??? ÇÇÀÚ";
         }
         firstEmpty.SetActive(true);
-        firstEmpty.transform.SetAsFirstSibling();
+        firstEmpty.transform.SetAsLastSibling();
     }
 }

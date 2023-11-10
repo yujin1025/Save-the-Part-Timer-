@@ -18,14 +18,16 @@ public class UI_Customer : UI_Base
         AcceptButton
     }
 
-    enum Images
+    public enum Images
     {
-        CustomerBackGround
+        CustomerBackGround,
+        CustomerIcon
     }
 
     public int deadLine;
     public int time;
     public string orderName;
+    public int customerIconNumber;
     public override void Init()
     {
         Bind<Text>(typeof(Texts));
