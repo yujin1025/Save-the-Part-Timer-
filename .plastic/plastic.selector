@@ -1,4 +1,4 @@
-repository "Save-the-Part-Timer-@kangyujin1025@cloud"
+repository "Save-the-Part-Timer-@SaveThePartTimer@cloud"
   path "/"
-    br "/main"
-    co "/main"
+    smartbranch "/main/Missing 이미지 고치기, 다음 버튼 만들기, 손님 중복 눌림 수정, GameScene 직관적으로 만들기" 
+     

@@ -1,0 +1,85 @@
+{
+  "recipes": [
+    {
+      "name": "치즈 피자",
+      "steps": {
+        "STEP1": ["토마토 소스"],
+        "STEP2": ["치즈"],
+        "STEP3": []
+      },
+      "ingredientImagesInOrder": ["layer_tomato", "layer_cheese"]
+    },
+    {
+      "name": "페퍼로니 피자",
+      "steps": {
+        "STEP1": ["토마토 소스"],
+        "STEP2": ["치즈"],
+        "STEP3": ["Pepperoni"]
+      },
+      "ingredientImagesInOrder": ["layer_tomato", "layer_cheese", "layer_pep all"]
+    },
+    {
+      "name": "베이컨 포테이토 피자",
+      "steps": {
+        "STEP1": ["토마토 소스"],
+        "STEP2": ["치즈"],
+        "STEP3": ["Potato", "Bacon", "Onion"]
+      },
+      "ingredientImagesInOrder": ["layer_tomato", "layer_cheese", "layer_pot all", "layer_bac all", "layer_oni all"]
+    },
+    {
+      "name": "불고기 피자",
+      "steps": {
+        "STEP1": ["구운 양파 소스"],
+        "STEP2": ["치즈"],
+        "STEP3": ["Mushroom", "Bulgogi", "Onion", "BellPepper"]
+      },
+      "ingredientImagesInOrder": ["layer_baked onion", "layer_cheese", "layer_mushroon all", "layer_bul all", "layer_oni all", "layer_green pepper all"]
+    },
+    {
+      "name": "옥수수 피자",
+      "steps": {
+        "STEP1": ["마요네즈"],
+        "STEP2": ["치즈"],
+        "STEP3": ["Corn", "Onion"]
+      },
+      "ingredientImagesInOrder": ["layer_mayo", "layer_cheese", "layer_corn all", "layer_oni all"]
+    },
+    {
+      "name": "페퍼로니&포테이토 반반 피자",
+      "steps": {
+        "STEP1": ["토마토 소스"],
+        "STEP2": ["치즈"],
+        "STEP3": ["Pepperoni", "Potato", "Bacon", "Onion"]
+      },
+      "ingredientImagesInOrder": ["layer_tomato", "layer_cheese", "layer_pep half", "layer_pot half1", "layer_bac half1", "layer_oni half1"]
+    },
+    {
+      "name": "포테이토&불고기 반반 피자",
+      "steps": {
+        "STEP1": ["토마토 소스", "구운 양파 소스"],
+        "STEP2": ["치즈"],
+        "STEP3": ["Potato", "Bacon", "Mushroom", "Bulgogi", "Onion", "BellPepper"]
+      },
+      "ingredientImagesInOrder": ["layer_tomato half", "layer_baked onion half", "layer_cheese", "layer_pot half2", "layer_bac half1", "layer_mushroon half1", "layer_bul half1", "layer_oni all", "layer_green pepper half1"]
+    },
+    {
+      "name": "불고기&옥수수 반반 피자",
+      "steps": {
+        "STEP1": ["구운 양파 소스", "마요네즈"],
+        "STEP2": ["치즈"],
+        "STEP3": ["Mushroom", "Bulgogi", "Corn", "Onion", "BellPepper"]
+      },
+      "ingredientImagesInOrder": ["layer_baked onion half2", "layer_mayo half", "layer_cheese", "layer_mushroon half2", "layer_bul half2", "layer_oni all"]
+    },
+    {
+      "name": "콤비네이션 피자",
+      "steps": {
+        "STEP1": ["토마토 소스"],
+        "STEP2": ["치즈"],
+        "STEP3": ["Mushroom", "Pepperoni", "Bacon", "Corn", "BellPepper", "Onion", "Olive"]
+      },
+      "ingredientImagesInOrder": ["layer_tomato", "layer_cheese", "layer_mush 3-4-3", "layer_pep 3-2", "layer_bac 2-3", "layer_corn middle", "layer_oni all", "layer_green pepper all", "layer_oli"]
+    }
+  ]
+}
