@@ -18,7 +18,7 @@ public class Managers : MonoBehaviour
     public class PizzaRecipe
     {
         public string name;
-        public Steps steps; // Steps는 새로운 클래스가 됩니다.
+        public Steps steps;
         public string[] ingredientImagesInOrder;
     }
 
@@ -105,7 +105,7 @@ public class Managers : MonoBehaviour
     public List<string> availablePizzasProperty { get { return Util.GetListFromString(PlayerPrefs.GetString(availablePizzasKey, "")); } set { PlayerPrefs.SetString(availablePizzasKey, Util.GetStringFromList(value)); } }
     public int moneyProperty { get { return PlayerPrefs.GetInt(moneyKey, 0); } set { PlayerPrefs.SetInt(moneyKey, value); } }
     //계약 일수 넣어야 함
-    public int dDayProperty { get { return PlayerPrefs.GetInt(dDayKey, 30); } set { PlayerPrefs.SetInt(dDayKey, value); } }
+    public int dDayProperty { get { return PlayerPrefs.GetInt(dDayKey, 1); } set { PlayerPrefs.SetInt(dDayKey, value); } }
     public string stageNameStrProperty { get { return PlayerPrefs.GetString(stageNameStrKey, "stage 1"); } set { PlayerPrefs.SetString(stageNameStrKey, value); } }
 
     static public PizzaRecipeList pizzaRecipeList;
@@ -126,6 +126,9 @@ public class Managers : MonoBehaviour
 
     SceneManagerEX sceneManager = new SceneManagerEX();
     public static SceneManagerEX sceneManagerEXProperty { get { return s_managersProperty.sceneManager; } }
+
+    static SoundManager soundManager = new SoundManager();
+    public static SoundManager soundManagerProperty { get { soundManager.Init(); return Managers.soundManager; } }
 
     // Start is called before the first frame update
     void Start()
@@ -172,7 +175,7 @@ public class Managers : MonoBehaviour
         }
 
         //실험할 난이도
-        Managers.s_managersProperty.stageNameStrProperty = "stage 23";
+        Managers.s_managersProperty.stageNameStrProperty = "stage 1";
     }
 
     static void LoadPizzaData()

@@ -40,6 +40,7 @@ public class UI_Game : UI_Scene
     public UI_Customer selectedCustomer;
 
     public bool pizzaMakingOnGoing;
+    public bool alreadyRested;
 
     public string orderName;
     
@@ -59,6 +60,7 @@ public class UI_Game : UI_Scene
         base.Init();
         sauceAnswer = new bool[3];
         pizzaMakingOnGoing = false;
+        alreadyRested = false;
 
         ui_step1 = Managers.uiManagerProperty.ShowPopupUIUnderParent<UI_Step1>(gameObject);
 
@@ -95,8 +97,16 @@ public class UI_Game : UI_Scene
     /// </summary>
     void HandleCountdownFinished()
     {
-        Time.timeScale = 0.0f; //stop game going
-        Managers.uiManagerProperty.ShowPopupUI<UI_BreakTime>();
+        if(alreadyRested) Managers.uiManagerProperty.ShowPopupUI<UI_GameResult>();
+        else
+        {
+            this.alreadyRested = true;
+            Managers.uiManagerProperty.ShowPopupUI<UI_BreakTime>();
+        }
+    }
+    public void UpdateMoney()
+    {
+        Get<Text>((int)Texts.RemainingMoney).text = $"잔고 : {Managers.s_managersProperty.moneyProperty.ToString()}";
     }
 
     /// <summary>

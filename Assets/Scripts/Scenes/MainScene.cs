@@ -6,6 +6,8 @@ public class MainScene : BaseScene
 {
     public override void Clear()
     {
+        Managers.soundManagerProperty.Play("BGM/HomeBGM", Defines.Sound.Bgm);
+        Managers.soundManagerProperty.Clear();
         //Clear 구현해야 함
     }
 
@@ -14,6 +16,7 @@ public class MainScene : BaseScene
         base.Init();
         Managers managers = Managers.s_managersProperty;
         Time.timeScale = 1.0f;
+        Managers.soundManagerProperty.Play("BGM/HomeBGM", Defines.Sound.Bgm);
         Managers.uiManagerProperty.ShowSceneUI<UI_Main>();
     }
 

@@ -73,6 +73,11 @@ public class UI_GaugeBar : UI_Base
         current += value;
     }
 
+    public void GaugeCurrentDown(float value)
+    {
+        current -= value;
+    }
+
     protected virtual void GaugeMax()
     {
         GaugeIsMax?.Invoke();

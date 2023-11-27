@@ -1,0 +1,144 @@
+{
+  "breaks": [
+    {
+      "breakTime": 1,
+      "option": "자판기 음료수를 마신다",
+      "dialog": "역시... 갈증에는 이온음료가 최고지 ",
+      "price": 1400,
+      "stress": 2
+    },
+    {
+      "breakTime": 2,
+      "option": "아이스 아메리카노를 마신다",
+      "dialog": "내 혈관에는 카페인이 흐른다...",
+      "price": 5000,
+      "stress": 4
+    },
+    {
+      "breakTime": 3,
+      "option": "아이스크림 츄러스를 먹는다",
+      "dialog": "바삭함과 부드러움의 조합... 이 맛이야!",
+      "price": 9900,
+      "stress": 6
+    },
+    {
+      "breakTime": 4,
+      "option": "연여덮밥을 먹는다",
+      "dialog": "흠. 생연어보다는 연어장이 맛있는 거 같아",
+      "price": 14700,
+      "stress": 8
+    },
+    {
+      "breakTime": 5,
+      "option": "무제한 회전초밥집을 간다",
+      "dialog": "20접시 정도 먹었나... 배불러. 이래서야 제대로 일할 수 있을까?",
+      "price": 19900,
+      "stress": 10
+    },
+    {
+      "breakTime": 6,
+      "option": "고전 문학 책을 두 권 산다",
+      "dialog": "교양도 틈틈이 쌓아야지",
+      "price": 24000,
+      "stress": 12
+    },
+    {
+      "breakTime": 7,
+      "option": "치킨 세트를 먹는다",
+      "dialog": "피자라면 질렸어",
+      "price": 30000,
+      "stress": 14
+    },
+    {
+      "breakTime": 8,
+      "option": "캐릭터 인형을 산다",
+      "dialog": "귀여워! 귀여운 게 최고야! 짜릿해!",
+      "price": 35000,
+      "stress": 16
+    },
+    {
+      "breakTime": 9,
+      "option": "스테이크와 파스타를 먹는다",
+      "dialog": "내가 이런 사치를 부리다니... 근데 스테이크가 질겼어...",
+      "price": 41200,
+      "stress": 18
+    },
+    {
+      "breakTime": 10,
+      "option": "브랜드 후드티를 산다",
+      "dialog": "전국민 커플템. 이제 나도 있다!",
+      "price": 49900,
+      "stress": 20
+    },
+    {
+      "breakTime": 11,
+      "option": "딸기타르트 한 판을 산다",
+      "dialog": "이 완전하고도 아름다운 원의 형태를 봐... 내 평생 꿈이었어",
+      "price": 55000,
+      "stress": 22
+    },
+    {
+      "breakTime": 12,
+      "option": "웹소설 캐시 충전을 한다",
+      "dialog": "딱 새벽 4시까지만 정주행해야지",
+      "price": 60000,
+      "stress": 24
+    },
+    {
+      "breakTime": 13,
+      "option": "노트북 수리를 맡긴다",
+      "dialog": "드디어 과제를 피씨방이 아닌 집에서 할 수 있어!",
+      "price": 64900,
+      "stress": 26
+    },
+    {
+      "breakTime": 14,
+      "option": "멀티비타민 세트를 산다",
+      "dialog": "먹으면 정말 피로가 풀리는 게 맞나?",
+      "price": 70000,
+      "stress": 28
+    },
+    {
+      "breakTime": 15,
+      "option": "다회용 필름카메라를 산다",
+      "dialog": "이걸로 알바 현장을 찍어서 노동청에 신고를...",
+      "price": 74900,
+      "stress": 30
+    },
+    {
+      "breakTime": 16,
+      "option": "한우 1등급 세트를 산다",
+      "dialog": "빨리 퇴근하고 싶다... 언제 집 가서 구워먹지.",
+      "price": 83000,
+      "stress": 32
+    },
+    {
+      "breakTime": 17,
+      "option": "레스토랑의 안심 스테이크를 먹는다",
+      "dialog": "순식간에 입안에서 녹아버렸어...",
+      "price": 89000,
+      "stress": 34
+    },
+    {
+      "breakTime": 18,
+      "option": "운동화를 산다",
+      "dialog": "이 닳아빠진 밑창도 이제 안녕이다",
+      "price": 95000,
+      "stress": 36
+    },
+    {
+      "breakTime": 19,
+      "option": "오마카세를 간다",
+      "dialog": "생각보다 그저 그랬어. 이 돈이면...",
+      "price": 100000,
+      "stress": 38
+    },
+    {
+      "breakTime": 20,
+      "option": "뮤지컬 VVIP석을 예매한다",
+      "dialog": "1열! 1열이라고!!!",
+      "price": 199900,
+      "stress": 40
+    }
+  ]
+}

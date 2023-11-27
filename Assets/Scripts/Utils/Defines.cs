@@ -16,6 +16,12 @@ public class Defines
         BreakTime,
         Ending,
     }
+    public enum Sound
+    {
+        Bgm,
+        Effect,
+        MaxCount,
+    }
     public enum UIEvent
     {
         Click,

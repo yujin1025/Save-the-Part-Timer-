@@ -14,7 +14,7 @@ public class LobbyScene : BaseScene
     {
         base.Init();
         Managers managers = Managers.s_managersProperty;
-        Time.timeScale = 0.0f;
+        Time.timeScale = 1.0f;
         Managers.uiManagerProperty.ShowSceneUI<UI_Lobby>();
     }
 

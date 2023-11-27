@@ -41,9 +41,10 @@ public class UI_Main : UI_Scene
         Bind<Button>(typeof(Buttons));
 
         Get<Text>((int)Texts.MoneyText).text = $"{Managers.s_managersProperty.moneyProperty.ToString()} 원";
-        Get<Text>((int)Texts.DDayText).text = $"D-{Managers.s_managersProperty.dDayProperty.ToString()}";
+        Get<Text>((int)Texts.DDayText).text = $"D+{Managers.s_managersProperty.dDayProperty.ToString()}";
         Get<Button>((int)Buttons.Reset).gameObject.BindEvent(OnResetButtonClicked);
         Get<Button>((int)Buttons.Start).gameObject.BindEvent(OnStartButtonClicked);
+        Get<Button>((int)Buttons.Settings).gameObject.BindEvent(OnSettingButtonClicked);
         Get<GameObject>((int)GameObjects.MainCharacter).gameObject.BindEvent(CharacterClicked);
 
     }
@@ -57,6 +58,10 @@ public class UI_Main : UI_Scene
     void OnStartButtonClicked(PointerEventData data)
     {
         Managers.sceneManagerEXProperty.LoadScene(Defines.Scene.Game);
+    }
+    void OnSettingButtonClicked(PointerEventData data)
+    {
+        Managers.uiManagerProperty.ShowPopupUI<UI_Settings>();
     }
 
     void CharacterClicked(PointerEventData data)

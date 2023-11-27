@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UI_GameResult : UI_Popup
 {
+
     enum Buttons
     {
         gotoMain,
@@ -15,6 +16,8 @@ public class UI_GameResult : UI_Popup
         base.Init();
         Bind<Button>(typeof(Buttons));
         Get<Button>((int)Buttons.gotoMain).gameObject.BindEvent(MoveToMain);
+
+        Managers.s_managersProperty.dDayProperty++;
     }
 
     void MoveToMain(PointerEventData data)

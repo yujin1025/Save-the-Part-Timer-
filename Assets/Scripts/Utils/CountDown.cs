@@ -13,13 +13,18 @@ public class CountDown : MonoBehaviour
 {
     public event Action CountdownFinished;
     private Text _timerText;
-    public float time = 181f;
+    public float time = 150f;
     public bool isCounting;
 
-    void Start()
+    public void Init()
     {
+        isCounting = true;
         _timerText = gameObject.GetComponent<Text>();
         StartCoroutine(Timer(time));
+    }
+    void Start()
+    {
+        Init();
     }
 
     private IEnumerator Timer(float _time)

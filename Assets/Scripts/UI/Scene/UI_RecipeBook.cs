@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI_RecipeBook : UI_Scene
@@ -9,7 +10,10 @@ public class UI_RecipeBook : UI_Scene
     {
         GridPanel
     }
-
+    enum Buttons
+    {
+        CloseButton
+    }
     enum Texts
     {
         Title
@@ -24,8 +28,10 @@ public class UI_RecipeBook : UI_Scene
         base.Init();
         Bind<GameObject>(typeof(GameObjects));
         Bind<Text>(typeof(Texts));
-
+        Bind<Button>(typeof(Buttons));
         GameObject gridPanel = Get<GameObject>((int)GameObjects.GridPanel);
+        Get<Button>((int)Buttons.CloseButton).gameObject.BindEvent(OnCloseButtonClicked);
+
 
         foreach (Transform child in gridPanel.transform)
             Managers.resourceManagerProperty.Destroy(child.gameObject);
@@ -35,5 +41,10 @@ public class UI_RecipeBook : UI_Scene
             GameObject pizzaIndex = Managers.uiManagerProperty.MakeSubItem<UI_PizzaIndex>(gridPanel.transform).gameObject;
             pizzaIndex.GetComponent<RectTransform>().localScale = Vector3.one;
         }
+    }
+
+    void OnCloseButtonClicked(PointerEventData data)
+    {
+        Managers.sceneManagerEXProperty.LoadScene(Defines.Scene.Main);
     }
 }
