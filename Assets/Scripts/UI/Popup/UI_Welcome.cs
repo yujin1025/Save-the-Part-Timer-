@@ -49,6 +49,5 @@ public class UI_Welcome : UI_Popup
     void OnGameStartButtonClicked(PointerEventData data)
     {
         Managers.uiManagerProperty.SafeClosePopupUIOnTop(this);
-        if (Managers.s_managersProperty.isFirstGameProperty == false) Managers.sceneManagerEXProperty.LoadScene(Defines.Scene.Main);
     }
 }

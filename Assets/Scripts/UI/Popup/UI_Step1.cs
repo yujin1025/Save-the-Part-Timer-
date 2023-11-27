@@ -175,6 +175,7 @@ public class UI_Step1 : UI_Popup
         {
             float currentGaugeValue = stopGaugeBar.GetCurrentGauge();
             Debug.Log("current gauge : " + currentGaugeValue);
+            //기획나오면 수정하기
         }
 
         isCheeseSelcetDone = true;

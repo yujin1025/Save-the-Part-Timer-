@@ -24,7 +24,7 @@ public class UI_Lobby : UI_Scene
         "“아쉽지만 경력이 없어서 뽑기 어렵겠네요.”",
         "하지만 알바 경력이 없는 나를 뽑아줄 곳을 찾기란 어려운 일이었다.",
         "“이번엔 여기나 지원해볼까?” 간단한 신상정보로만 지원한 백화점 식품관의 피자가게.",
-        "“당장 이번 주부터 나오면 됩니다. 대신 최소 3개월은 일해야 합니다. 가능하겠어요?”",
+        "“당장 이번 주부터 나오면 됩니다. \n대신 최소 3개월은 일해야 합니다. 가능하겠어요?”",
         "(내 빈 통장 잔액을 채우기 위해서라면 못할 게 없다!) 네, 네…!",
         "“그럼 오늘 근로계약서부터 쓰고 가세요.”",
         "<< 이름을 입력해주세요 >>",  //12
@@ -63,7 +63,7 @@ public class UI_Lobby : UI_Scene
         Get<GameObject>((int)GameObjects.background2).SetActive(false);
         Get<GameObject>((int)GameObjects.background3).SetActive(false);
 
-        Get<GameObject>((int)GameObjects.Employee).SetActive(false);
+        Get<GameObject>((int)GameObjects.Employee).SetActive(true);
         Get<GameObject>((int)GameObjects.Manager).SetActive(false);
 
         Get<Text>((int)Texts.TalkText).text = talkData[index];
@@ -167,7 +167,7 @@ public class UI_Lobby : UI_Scene
             Get<GameObject>((int)GameObjects.Employee).SetActive(true);
             Get<GameObject>((int)GameObjects.Manager).SetActive(true);
         }
-        else if (index == 6 && index == 7)
+        else if (index == 6 || index == 7)
         {
             Get<GameObject>((int)GameObjects.Employee).SetActive(false);
             Get<GameObject>((int)GameObjects.Manager).SetActive(false);
