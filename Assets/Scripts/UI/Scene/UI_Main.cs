@@ -45,6 +45,7 @@ public class UI_Main : UI_Scene
         Get<Button>((int)Buttons.Reset).gameObject.BindEvent(OnResetButtonClicked);
         Get<Button>((int)Buttons.Start).gameObject.BindEvent(OnStartButtonClicked);
         Get<Button>((int)Buttons.Settings).gameObject.BindEvent(OnSettingButtonClicked);
+        Get<Button>((int)Buttons.RecipeBook).gameObject.BindEvent(OnRecipeButtonClicked);
         Get<GameObject>((int)GameObjects.MainCharacter).gameObject.BindEvent(CharacterClicked);
 
     }
@@ -62,6 +63,11 @@ public class UI_Main : UI_Scene
     void OnSettingButtonClicked(PointerEventData data)
     {
         Managers.uiManagerProperty.ShowPopupUI<UI_Settings>();
+    }
+
+    void OnRecipeButtonClicked(PointerEventData data)
+    {
+        Managers.sceneManagerEXProperty.LoadScene(Defines.Scene.RecipeBook);
     }
 
     void CharacterClicked(PointerEventData data)

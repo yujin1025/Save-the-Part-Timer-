@@ -33,6 +33,7 @@ public class UI_Step3 : UI_Popup
     private List<Buttons> correctIngredients;
 
     private int order = 0;
+    
 
     UI_Game ui_game;
 
@@ -127,7 +128,7 @@ public class UI_Step3 : UI_Popup
         pizzaDataMap.Add("콤비네이션 피자", CombinationPizzaData);
     }
 
-    //orderName�� �ش��ϴ� PizzaRecipe step3 �迭 ������
+    //orderName에 해당하는 PizzaRecipe에서 step3의 재료를 가져오기
     List<Buttons> GetIngredientsOrder(string pizzaName)
     {
         List<Buttons> order = new List<Buttons>();
@@ -143,7 +144,9 @@ public class UI_Step3 : UI_Popup
             if (step3Ingredients.Length == 0)
             {
                 BackToStep1();
-                Debug.Log("추가 재료가 필요 없는 피자");
+                Debug.Log("치즈 피자");
+                ui_game.earnedMoney += Managers.pizzaRecipeList.ReturnPriceOrder(ui_game.orderName);
+                Debug.Log("지금까지 번 돈 :" + ui_game.earnedMoney);
             }
             Debug.Log(step3Ingredients);
         }
@@ -214,6 +217,10 @@ public class UI_Step3 : UI_Popup
         {
             isIngreSelectDone = true;
             Debug.Log("피자 완성되었음");
+            //Debug.Log(Managers.s_managersProperty.moneyProperty + Managers.pizzaRecipeList.ReturnPriceOrder(ui_game.orderName));
+            ui_game.earnedMoney += Managers.pizzaRecipeList.ReturnPriceOrder(ui_game.orderName);
+            Debug.Log("지금까지 번 돈 :"+ ui_game.earnedMoney);
+
 
             ui_game.Get<Image>((int)UI_Game.Images.NextStepReadyImage).gameObject.SetActive(true);
             ui_game.Get<Button>((int)UI_Game.Buttons.NextButton).gameObject.SetActive(true);

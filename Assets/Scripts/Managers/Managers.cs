@@ -20,6 +20,7 @@ public class Managers : MonoBehaviour
         public string name;
         public Steps steps;
         public string[] ingredientImagesInOrder;
+        public int price;
     }
 
     [System.Serializable]
@@ -59,6 +60,18 @@ public class Managers : MonoBehaviour
             }
             Debug.Log("피자 못찾음");
             return null;
+        }
+        public int ReturnPriceOrder(string pizzaName)
+        {
+            foreach (PizzaRecipe recipe in recipes)
+            {
+                if (recipe.name == pizzaName)
+                {
+                    return recipe.price;
+                }
+            }
+            Debug.Log("피자 못찾음");
+            return 0;
         }
     }
 

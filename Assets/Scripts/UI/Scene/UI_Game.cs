@@ -48,6 +48,7 @@ public class UI_Game : UI_Scene
 
     public string[] ingredientOrder;
 
+    public int earnedMoney = 0;
 
     void Start()
     {
@@ -78,12 +79,10 @@ public class UI_Game : UI_Scene
         Get<GameObject>((int)GameObjects.OnionSauceLayer).SetActive(false);
         Get<GameObject>((int)GameObjects.CheeseLayer).SetActive(false);
 
-        //ī  Ʈ ٿ   ̺ Ʈ    
         CountDown countDown = Get<Text>((int)Texts.RemainingTime).gameObject.GetComponent<CountDown>();
         countDown.CountdownFinished -= HandleCountdownFinished;
         countDown.CountdownFinished += HandleCountdownFinished;
 
-        //max stress  ̺ Ʈ    
         UI_GaugeBar gaugeBar = Get<GameObject>((int)GameObjects.StressBar).GetComponent<UI_GaugeBar>();
         gaugeBar.GaugeIsMax -= HandleStressGauge;
         gaugeBar.GaugeIsMax += HandleStressGauge;
@@ -92,9 +91,7 @@ public class UI_Game : UI_Scene
         Get<Button>((int)Buttons.NextButton).gameObject.SetActive(false);
     }
 
-    /// <summary>
-    /// countDownFInished  ̺ Ʈ  ߻        Ǵ   Լ 
-    /// </summary>
+
     void HandleCountdownFinished()
     {
         if(alreadyRested) Managers.uiManagerProperty.ShowPopupUI<UI_GameResult>();
@@ -109,9 +106,7 @@ public class UI_Game : UI_Scene
         Get<Text>((int)Texts.RemainingMoney).text = $"잔고 : {Managers.s_managersProperty.moneyProperty.ToString()}";
     }
 
-    /// <summary>
-    /// max stress  ̺ Ʈ  ߻        Ǵ   Լ 
-    /// </summary>
+
     void HandleStressGauge()
     {
         Time.timeScale = 0.0f; //stop game going

@@ -41,13 +41,13 @@ public class UI_Welcome : UI_Popup
     void OnResetButtonClicked(PointerEventData data)
     {
         Managers.s_managersProperty.playerNameProperty = "Guest";
-        Managers.s_managersProperty.isFirstGameProperty = true;
         Managers.uiManagerProperty.SafeClosePopupUIOnTop(this);
-        Managers.sceneManagerEXProperty.LoadScene(Defines.Scene.Start);
+        if (Managers.s_managersProperty.playerNameProperty == "Guest") 
+            Managers.uiManagerProperty.ShowPopupUI<UI_DoInput>();
     }
 
     void OnGameStartButtonClicked(PointerEventData data)
     {
-        Managers.uiManagerProperty.SafeClosePopupUIOnTop(this);
+        Managers.sceneManagerEXProperty.LoadScene(Defines.Scene.Main);
     }
 }

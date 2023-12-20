@@ -83,9 +83,9 @@ public class UI_BreakTime : UI_Popup
         Get<Button>((int)Buttons.GoToBreak).gameObject.BindEvent(MoveToBreak);
         Get<Button>((int)Buttons.GoToWork).gameObject.BindEvent(MoveToWork);
 
-        Get<Button>((int)Buttons.Option1).gameObject.BindEvent(Option1Clicked);
-        Get<Button>((int)Buttons.Option2).gameObject.BindEvent(Option2Clicked);
-        Get<Button>((int)Buttons.Option3).gameObject.BindEvent(Option3Clicked);
+        Get<Button>((int)Buttons.Option1).gameObject.BindEvent((data) => OptionClicked(data, 0));
+        Get<Button>((int)Buttons.Option2).gameObject.BindEvent((data) => OptionClicked(data, 1));
+        Get<Button>((int)Buttons.Option3).gameObject.BindEvent((data) => OptionClicked(data, 2));
         Get<Button>((int)Buttons.GoToLounge).gameObject.BindEvent(GoToLoungeClicked);
 
 
@@ -162,7 +162,7 @@ public class UI_BreakTime : UI_Popup
 
     }
 
-    void Option1Clicked(PointerEventData data)
+    void OptionClicked(PointerEventData data, int index)
     {
         //잔액 부족시 대사만 바뀜
         Get<Text>((int)Texts.TalkText).text =
@@ -170,65 +170,29 @@ public class UI_BreakTime : UI_Popup
             "- 직원 휴게실에서 쉬기 \n" +
             "(가격 : 0원, 스트레스 감소도 : 0)";
 
-        // 잔액이 충분한경우 금액 차감, 스트레스 감소
-        if (Managers.s_managersProperty.moneyProperty >= ChosenData[0].price)
+        // 잔액이 충분한 경우 금액 차감, 스트레스 감소
+        if (Managers.s_managersProperty.moneyProperty >= ChosenData[index].price)
         {
-            GoToWork(0);
-            Managers.s_managersProperty.moneyProperty -= ChosenData[0].price;
-            UI_Game.FindObjectOfType<UI_GaugeBar>().GaugeCurrentDown(ChosenData[0].price);
-            Debug.Log("현재 돈" + Managers.s_managersProperty.moneyProperty);
-        }
-    }
-
-    void Option2Clicked(PointerEventData data)
-    {
-        //잔액 부족시 대사만 바뀜
-        Get<Text>((int)Texts.TalkText).text =
-            "돈이 부족해... \n" +
-            "- 직원 휴게실에서 쉬기 \n" +
-            "(가격 : 0원, 스트레스 감소도 : 0)";
-
-        // 잔액이 충분한경우 금액 차감, 스트레스 감소
-        if (Managers.s_managersProperty.moneyProperty >= ChosenData[1].price)
-        {
-            GoToWork(1);
-            Managers.s_managersProperty.moneyProperty -= ChosenData[1].price;
-            ui_game.GetComponentInChildren<UI_GaugeBar>().GaugeCurrentDown(ChosenData[1].price);
-            Debug.Log("현재 돈" + Managers.s_managersProperty.moneyProperty);
-        }
-    }
-
-    void Option3Clicked(PointerEventData data)
-    {
-        //잔액 부족시 대사만 바뀜
-        Get<Text>((int)Texts.TalkText).text =
-            "돈이 부족해... \n" +
-            "- 직원 휴게실에서 쉬기 \n" +
-            "(가격 : 0원, 스트레스 감소도 : 0)";
-
-        // 잔액이 충분한경우 금액 차감, 스트레스 감소
-        if (Managers.s_managersProperty.moneyProperty >= ChosenData[2].price)
-        {
-            GoToWork(2);
-            Managers.s_managersProperty.moneyProperty -= ChosenData[2].price;
-            ui_game.GetComponentInChildren<UI_GaugeBar>().GaugeCurrentDown(ChosenData[2].price);
+            PanelText(index);
+            Managers.s_managersProperty.moneyProperty -= ChosenData[index].price;
+            ui_game.GetComponentInChildren<UI_GaugeBar>().GaugeCurrentDown(ChosenData[index].price);
             Debug.Log("현재 돈" + Managers.s_managersProperty.moneyProperty);
         }
     }
 
     void GoToLoungeClicked(PointerEventData data)
     {
-        GoToWork(3);
+        PanelText(3);
     }
-
     
-    void GoToWork(int index)
+
+    void PanelText(int index)
     {
         Get<GameObject>((int)GameObjects.Options).gameObject.SetActive(false);
         if (index < 3)
             Get<Text>((int)Texts.TalkText).text = ChosenData[index].dialog;
-        else
-            Get<Text>((int)Texts.TalkText).text = " "; //대사 아직 안나옴
+        else //직원 휴게실
+            Get<Text>((int)Texts.TalkText).text = "피로가 풀리지 않는 느낌...";
         Get<Button>((int)Buttons.GoToWork).gameObject.SetActive(true);
         Get<Button>((int)Buttons.GoToLounge).gameObject.SetActive(false);
     }

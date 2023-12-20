@@ -102,7 +102,7 @@ public class UI_Step1 : UI_Popup
 
     void ChooseSauceAndCheck(int index)
     {
-        // ѷ       ҽ         ϸ   ҽ     Ѹ 
+        //올바른 소스이면 해당 소스 이미지 출력
         if(ui_game.sauceAnswer[index])
         {
             if (chosenSauce[index] == false) chosenSauce[index] = true;
@@ -149,12 +149,12 @@ public class UI_Step1 : UI_Popup
         }
         else
         {
-            Debug.Log("Ʋ    ҽ  Դϴ ");
+            Debug.Log("틀린 소스");
+            UI_Game.FindObjectOfType<UI_GaugeBar>().GaugeCurrentUp(5);
         }
 
         if (chosenSauce.SequenceEqual<bool>(ui_game.sauceAnswer))
         {
-            Debug.Log(" ҽ      ");
             isSauceSelectDone = true;
             Get<GameObject>((int)GameObjects.SauceBlocker).SetActive(true);
             Get<GameObject>((int)GameObjects.CheeseBlocker).SetActive(false);
@@ -164,10 +164,9 @@ public class UI_Step1 : UI_Popup
     }
     public void OnCheeseClicked(PointerEventData data)
     {
-        //ġ    ̹     ö     0.5 ʵ   ڵ      3 ܰ     ȯ
         ui_game.Get<GameObject>((int)UI_Game.GameObjects.CheeseLayer).SetActive(true);
         Get<GameObject>((int)GameObjects.CheeseBlocker).SetActive(true);
-        Debug.Log("ġ    ߰ ");
+        Debug.Log("치즈 추가");
 
         UI_StopGaugeBar stopGaugeBar = transform.parent.GetComponentInChildren<UI_StopGaugeBar>();
 
@@ -175,7 +174,16 @@ public class UI_Step1 : UI_Popup
         {
             float currentGaugeValue = stopGaugeBar.GetCurrentGauge();
             Debug.Log("current gauge : " + currentGaugeValue);
-            //기획나오면 수정하기
+            //오차범위 기획나오면 수정하기
+            if ((currentGaugeValue >= 0 && currentGaugeValue < 20) || (currentGaugeValue >= 80 && currentGaugeValue <= 100))
+            {
+                UI_Game.FindObjectOfType<UI_GaugeBar>().GaugeCurrentUp(5);
+            }
+
+            else if (currentGaugeValue >= 30 && currentGaugeValue <= 70)
+            {
+                UI_Game.FindObjectOfType<UI_GaugeBar>().GaugeCurrentDown(5);
+            }
         }
 
         isCheeseSelcetDone = true;
