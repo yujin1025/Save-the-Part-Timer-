@@ -13,7 +13,7 @@ public class CountDown : MonoBehaviour
 {
     public event Action CountdownFinished;
     private Text _timerText;
-    public float time = 150f;
+    public float time = 90f;
     public bool isCounting;
 
     public void Init()
