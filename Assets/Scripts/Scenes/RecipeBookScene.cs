@@ -13,7 +13,7 @@ public class RecipeBookScene : BaseScene
     {
         base.Init();
         Managers managers = Managers.s_managersProperty;
-        Managers.uiManagerProperty.ShowSceneUI<UI_RecipeBook>();
+        Managers.uiManagerProperty.ShowPopupUI<UI_RecipeBook>();
     }
 
     // Start is called before the first frame update

@@ -240,7 +240,7 @@ public class UI_Step3 : UI_Popup
         //데드라인을 넘겼던 고객일 경우 스트레스 상승량을 내림
         if (ui_game.selectedCustomer.time >= ui_game.selectedCustomer.deadLine)
         {
-            ui_game.Get<GameObject>((int)UI_Game.GameObjects.StressBar).GetComponent<UI_GaugeBar>().GaugeSpeedDown(1);
+            ui_game.Get<GameObject>((int)UI_Game.GameObjects.StressBar).GetComponent<UI_GaugeBar>().GaugeSpeedDown(0.2f);
         }
 
         //주문이 완료된 고객을 지움

@@ -6,21 +6,40 @@ using UnityEngine.UI;
 
 public class UI_PizzaIndex : UI_Base
 {
+    public int pizzaNum;
+    public string pizzaName;
+    public bool isPizzaLocked;
+    public Sprite pizzaSprite;
+    public Sprite pizzaRecipeSprite;
+
     enum Texts
     {
-        PizzaName
+        PizzaNameText
     }
 
     enum Images
     {
-        PizzaIcon
+        PizzaIcon,
+        PizzaInfo,
+        PizzaLocked
     }
 
     public override void Init()
     {
         Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
-        Get<Image>((int)Images.PizzaIcon).gameObject.BindEvent(OnPizzaImageClicked);
+        Get<Text>((int)Texts.PizzaNameText).text = pizzaName;
+        Get<Image>((int)Images.PizzaIcon).sprite = pizzaSprite;
+
+        if (isPizzaLocked)
+        {
+            Get<Image>((int)Images.PizzaLocked).gameObject.SetActive(true);
+        }
+        else
+        {
+            Get<Image>((int)Images.PizzaLocked).gameObject.SetActive(false);
+            Get<Image>((int)Images.PizzaInfo).gameObject.BindEvent(OnPizzaInfoClicked);
+        }
     }
 
     
@@ -29,8 +48,8 @@ public class UI_PizzaIndex : UI_Base
         Init();
     }
 
-    public void OnPizzaImageClicked(PointerEventData data)
+    public void OnPizzaInfoClicked(PointerEventData data)
     {
-        Managers.uiManagerProperty.ShowPopupUI<UI_Recipe>();
+        Managers.uiManagerProperty.ShowPopupUIUnderParent<UI_Recipe>(gameObject);
     }
 }

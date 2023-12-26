@@ -43,7 +43,10 @@ public abstract class UI_Base : MonoBehaviour
                 uiHendlerScript.OnClickHandler -= action;
                 uiHendlerScript.OnClickHandler += action;
                 break;
-            
+            case Defines.UIEvent.Drag:
+                uiHendlerScript.OnDragHandler -= action;
+                uiHendlerScript.OnDragHandler += action;
+                break;
         }
     }
 }

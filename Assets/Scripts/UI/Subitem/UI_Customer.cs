@@ -20,7 +20,7 @@ public class UI_Customer : UI_Base
 
     public enum Images
     {
-        CustomerBackGround,
+        SpeachBubble,
         CustomerIcon
     }
 
@@ -35,7 +35,6 @@ public class UI_Customer : UI_Base
         Bind<Image>(typeof(Images));
 
         Get<Button>((int)Buttons.AcceptButton).gameObject.BindEvent(OnButtonClicked);
-        Get<Image>((int)Images.CustomerBackGround).gameObject.SetActive(false);
         time = 0;
 
     }
@@ -53,7 +52,7 @@ public class UI_Customer : UI_Base
         if (ui_game.pizzaMakingOnGoing == false)
         {
             //선택되었음을 표시
-            Get<Image>((int)Images.CustomerBackGround).gameObject.SetActive(true);
+            Get<Image>((int)Images.SpeachBubble).color = new Color(0xC1/255f, 0xC1/255f, 0xC1/255f);
 
             //피자를 만들기 시작했다고 체크
             ui_game.pizzaMakingOnGoing = true;
@@ -88,7 +87,7 @@ public class UI_Customer : UI_Base
             if (time == deadLine)
             {
                 UI_Game ui_game = transform.parent.parent.gameObject.GetComponent<UI_Game>();
-                ui_game.Get<GameObject>((int)UI_Game.GameObjects.StressBar).GetComponent<UI_GaugeBar>().GaugeSpeedUp(1);
+                ui_game.Get<GameObject>((int)UI_Game.GameObjects.StressBar).GetComponent<UI_GaugeBar>().GaugeSpeedUp(0.2f);
             }
             yield return new WaitForSeconds(1);
         }
@@ -106,8 +105,8 @@ public class UI_Customer : UI_Base
     private void OnEnable()
     {
         time = 0;
-        Get<Image>((int)Images.CustomerBackGround).gameObject.SetActive(false);
         Get<Text>((int)Texts.Order).text = orderName;
+        Get<Image>((int)Images.SpeachBubble).color = Color.white;
         StartCoroutine(CountDeadLine());
     }
 }

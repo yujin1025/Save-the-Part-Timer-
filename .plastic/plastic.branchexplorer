@@ -21,6 +21,6 @@ display.options.timesince=AGivenDate
 display.optionspanel.visible=false
 display.optionspanel.visibletabindex=0
 display.properties.legend=false
-display.properties.zoom=0.729
+display.properties.zoom=1.5241579
 filters.conditional.numrules=0
 

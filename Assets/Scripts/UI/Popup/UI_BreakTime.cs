@@ -23,6 +23,8 @@ public class UI_BreakTime : UI_Popup
         Option1Text,
         Option2Text,
         Option3Text,
+        TimeText,
+        MoneyText,
     }
 
     enum Buttons
@@ -33,6 +35,7 @@ public class UI_BreakTime : UI_Popup
         Option2,
         Option3,
         GoToLounge,
+        SettingButton,
     }
 
     [System.Serializable]
@@ -63,8 +66,6 @@ public class UI_BreakTime : UI_Popup
 
     public override void Init()
     {
-        Time.timeScale = 0.0f; //stop game going
-
         ui_game = FindObjectOfType<UI_Game>();
 
         base.Init();
@@ -73,6 +74,8 @@ public class UI_BreakTime : UI_Popup
         Bind<Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
 
+        Get<Text>((int)Texts.TimeText).text = "00:00";
+        Get<Text>((int)Texts.MoneyText).text = $"잔고 : {Managers.s_managersProperty.moneyProperty.ToString()}";
         Get<GameObject>((int)GameObjects.background2).gameObject.SetActive(false);
         Get<GameObject>((int)GameObjects.Options).gameObject.SetActive(false);
         Get<GameObject>((int)GameObjects.Employee).gameObject.SetActive(false);
@@ -82,6 +85,7 @@ public class UI_BreakTime : UI_Popup
 
         Get<Button>((int)Buttons.GoToBreak).gameObject.BindEvent(MoveToBreak);
         Get<Button>((int)Buttons.GoToWork).gameObject.BindEvent(MoveToWork);
+        Get<Button>((int)Buttons.SettingButton).gameObject.BindEvent(OnSettingButtonClicked);
 
         Get<Button>((int)Buttons.Option1).gameObject.BindEvent((data) => OptionClicked(data, 0));
         Get<Button>((int)Buttons.Option2).gameObject.BindEvent((data) => OptionClicked(data, 1));
@@ -119,7 +123,12 @@ public class UI_BreakTime : UI_Popup
         Init();
     }
 
-    
+    void OnSettingButtonClicked(PointerEventData data)
+    {
+        Managers.uiManagerProperty.ShowPopupUI<UI_Settings>();
+    }
+
+
     //선택지 20개 중 3개 중복 없이 배열에 넣음
     List<BreakData> RandomOptions(int count)
     {
@@ -131,7 +140,6 @@ public class UI_BreakTime : UI_Popup
             int randomIndex = Random.Range(0, AllOptions.Count);
             ChosenOptions.Add(AllOptions[randomIndex]);
             AllOptions.RemoveAt(randomIndex);
-            Debug.Log($"AllOptions.Count: {AllOptions.Count}");
         }
 
         return ChosenOptions;
@@ -173,9 +181,11 @@ public class UI_BreakTime : UI_Popup
         // 잔액이 충분한 경우 금액 차감, 스트레스 감소
         if (Managers.s_managersProperty.moneyProperty >= ChosenData[index].price)
         {
+            int stressReduction = Mathf.Max(0, ChosenData[index].stress);
+
             PanelText(index);
             Managers.s_managersProperty.moneyProperty -= ChosenData[index].price;
-            ui_game.GetComponentInChildren<UI_GaugeBar>().GaugeCurrentDown(ChosenData[index].price);
+            ui_game.GetComponentInChildren<UI_GaugeBar>().GaugeCurrentDown(stressReduction);
             Debug.Log("현재 돈" + Managers.s_managersProperty.moneyProperty);
         }
     }

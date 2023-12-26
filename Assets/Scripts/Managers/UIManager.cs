@@ -117,7 +117,7 @@ public class UIManager
         //Stack 에서는 Count check 를 생활화 할 필요 있음
         if (m_popupStack.Count == 0) return;
         UI_Popup popup = m_popupStack.Pop();
-        Managers.resourceManagerProperty.Destroy(popup.gameObject);
+        if (popup != null) Managers.resourceManagerProperty.Destroy(popup.gameObject);
         popup = null;
     }
 

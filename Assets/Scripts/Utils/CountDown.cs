@@ -13,14 +13,14 @@ public class CountDown : MonoBehaviour
 {
     public event Action CountdownFinished;
     private Text _timerText;
-    public float time = 150f;
+    public float time = 90f;
     public bool isCounting;
 
     public void Init()
     {
         isCounting = true;
         _timerText = gameObject.GetComponent<Text>();
-        StartCoroutine(Timer(time));
+        StartCoroutine(Timer(10));//제한시간 바꾸고 싶으면 time 대신 숫자 집어넣기
     }
     void Start()
     {

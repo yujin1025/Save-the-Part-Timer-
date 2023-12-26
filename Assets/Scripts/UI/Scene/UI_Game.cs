@@ -73,6 +73,7 @@ public class UI_Game : UI_Scene
         Get<Text>((int)Texts.RemainingMoney).text = $"잔고 : {Managers.s_managersProperty.moneyProperty.ToString()}";
         Get<Button>((int)Buttons.NextButton).gameObject.BindEvent(OnNextButtonClicked);
         orderName = "None";
+        Get<Button>((int)Buttons.SettingButton).gameObject.BindEvent(OnSettingButtonClicked);
 
         Get<GameObject>((int)GameObjects.TomatoSauceLayer).SetActive(false);
         Get<GameObject>((int)GameObjects.MayonnaiseSauceLayer).SetActive(false);
@@ -98,12 +99,19 @@ public class UI_Game : UI_Scene
         else
         {
             this.alreadyRested = true;
+            Time.timeScale = 0.0f; //stop game going
             Managers.uiManagerProperty.ShowPopupUI<UI_BreakTime>();
         }
     }
     public void UpdateMoney()
     {
         Get<Text>((int)Texts.RemainingMoney).text = $"잔고 : {Managers.s_managersProperty.moneyProperty.ToString()}";
+    }
+
+    void OnSettingButtonClicked(PointerEventData data)
+    {
+        Time.timeScale = 0.0f;
+        Managers.uiManagerProperty.ShowPopupUI<UI_Settings>();
     }
 
 

@@ -11,7 +11,6 @@ public class Defines
         Start,
         Lobby,
         Main,
-        RecipeBook,
         Game,
         BreakTime,
         Ending,
@@ -25,5 +24,6 @@ public class Defines
     public enum UIEvent
     {
         Click,
+        Drag
     }
 }

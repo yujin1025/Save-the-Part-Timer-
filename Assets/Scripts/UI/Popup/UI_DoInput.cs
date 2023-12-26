@@ -51,7 +51,7 @@ public class UI_DoInput : UI_Popup
     {
         if (Get<Text>((int)Texts.NameInput).text == "Guest")
         {
-            Debug.Log("Guest ·Î´Â ÀÌ¸§À» ¼³Á¤ ºÒ°¡");
+            Debug.Log("Guest ë¡œëŠ” ì´ë¦„ì„ ì„¤ì • ë¶ˆê°€");
             return;
         }
         Managers.s_managersProperty.playerNameProperty = Get<Text>((int)Texts.NameInput).text;

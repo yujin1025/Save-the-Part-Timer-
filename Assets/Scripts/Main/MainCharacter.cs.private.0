@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class MainCharacter : MonoBehaviour
+{
+    public Text ScriptTxt;
+    private int RandomInt;
+    private string script;
+
+    void Start()
+    {
+        ScriptTxt.text = "기본 대사";
+    }
+
+    public void CharacterText()
+    {
+        ScriptTxt.text = RandomScript();
+    }
+
+    
+    public string RandomScript()
+    {
+        RandomInt = Random.Range(0, 6);
+
+        if (RandomInt == 0)
+            script = "거친 노동의 세계...";
+        else if (RandomInt == 1)
+            script = "세상아 망해라";
+        else if (RandomInt == 2)
+            script = "일하기 싫어!";
+        else if (RandomInt == 3)
+            script = "자본주의로부터의\n자유를 꿈꾸다";
+        else if (RandomInt == 4)
+            script = "어제 산 복권도 꽝이야";
+        else if (RandomInt == 5)
+            script = "출근은 무슨...";
+
+        return script;
+    }
+}

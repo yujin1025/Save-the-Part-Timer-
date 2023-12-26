@@ -109,7 +109,6 @@
 -define:ENABLE_UNITY_COLLECTIONS_CHECKS
 -define:ENABLE_BURST_AOT
 -define:UNITY_TEAM_LICENSE
--define:UNITY_PRO_LICENSE
 -define:ENABLE_CUSTOM_RENDER_TEXTURE
 -define:ENABLE_DIRECTOR
 -define:ENABLE_LOCALIZATION
@@ -326,6 +325,11 @@
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.9f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XPath.XDocument.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.9f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.9f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll"
+-r:"C:/Program Files/Unity/Hub/Editor/2022.3.9f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Gradle.dll"
+-r:"C:/Program Files/Unity/Hub/Editor/2022.3.9f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.GradleProject.dll"
+-r:"C:/Program Files/Unity/Hub/Editor/2022.3.9f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Types.dll"
+-r:"C:/Program Files/Unity/Hub/Editor/2022.3.9f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll"
+-r:"C:/Program Files/Unity/Hub/Editor/2022.3.9f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll"
 -r:"Library/PackageCache/com.unity.collections@1.2.4/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/PsdPlugin.ref.dll"
@@ -406,12 +410,18 @@
 "Assets/Scripts/Scenes/StartScene.cs"
 "Assets/Scripts/Start/StartCanvas.cs"
 "Assets/Scripts/UI/Popup/UI_BreakTime.cs"
+"Assets/Scripts/UI/Popup/UI_CantReset.cs"
+"Assets/Scripts/UI/Popup/UI_CantRetire.cs"
 "Assets/Scripts/UI/Popup/UI_DoInput.cs"
 "Assets/Scripts/UI/Popup/UI_GameOver.cs"
 "Assets/Scripts/UI/Popup/UI_GameResult.cs"
 "Assets/Scripts/UI/Popup/UI_Popup.cs"
 "Assets/Scripts/UI/Popup/UI_PressToStart.cs"
 "Assets/Scripts/UI/Popup/UI_Recipe.cs"
+"Assets/Scripts/UI/Popup/UI_RecipeBook.cs"
+"Assets/Scripts/UI/Popup/UI_Reset.cs"
+"Assets/Scripts/UI/Popup/UI_Retire.cs"
+"Assets/Scripts/UI/Popup/UI_RetireTalk.cs"
 "Assets/Scripts/UI/Popup/UI_Settings.cs"
 "Assets/Scripts/UI/Popup/UI_Step1.cs"
 "Assets/Scripts/UI/Popup/UI_Step3.cs"
@@ -419,7 +429,6 @@
 "Assets/Scripts/UI/Scene/UI_Game.cs"
 "Assets/Scripts/UI/Scene/UI_Lobby.cs"
 "Assets/Scripts/UI/Scene/UI_Main.cs"
-"Assets/Scripts/UI/Scene/UI_RecipeBook.cs"
 "Assets/Scripts/UI/Scene/UI_Scene.cs"
 "Assets/Scripts/UI/Scene/UI_Start.cs"
 "Assets/Scripts/UI/Subitem/UI_BlinkingImage.cs"

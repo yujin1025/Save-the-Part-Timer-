@@ -175,12 +175,12 @@ public class UI_Step1 : UI_Popup
             float currentGaugeValue = stopGaugeBar.GetCurrentGauge();
             Debug.Log("current gauge : " + currentGaugeValue);
             //오차범위 기획나오면 수정하기
-            if ((currentGaugeValue >= 0 && currentGaugeValue < 20) || (currentGaugeValue >= 80 && currentGaugeValue <= 100))
+            if ((currentGaugeValue >= 0 && currentGaugeValue < 30) || (currentGaugeValue >= 70 && currentGaugeValue <= 100))
             {
                 UI_Game.FindObjectOfType<UI_GaugeBar>().GaugeCurrentUp(5);
             }
 
-            else if (currentGaugeValue >= 30 && currentGaugeValue <= 70)
+            else if (currentGaugeValue >= 40 && currentGaugeValue <= 60)
             {
                 UI_Game.FindObjectOfType<UI_GaugeBar>().GaugeCurrentDown(5);
             }

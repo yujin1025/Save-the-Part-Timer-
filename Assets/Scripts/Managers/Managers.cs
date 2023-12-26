@@ -8,11 +8,13 @@ public class Managers : MonoBehaviour
 
     string playerNameKey = "PlayerName";
     string firstGameKey = "IsFirstGame";
+    string firstRetireKey = "IsFirstRetire";
     string unlockedRecipesKey = "UnlockedRecipes";
     string availablePizzasKey = "AvailablePizzas";
     string moneyKey = "Money";
     string dDayKey = "DDay";
     string stageNameStrKey = "StageNameStr";
+
 
     [System.Serializable]
     public class PizzaRecipe
@@ -111,9 +113,11 @@ public class Managers : MonoBehaviour
 
     static List<Sprite> PizzaImageList; 
     public static Dictionary<string, Sprite> PizzaIngredientSpriteDic;
+    public static Dictionary<int, string> pizzaDec;
 
     public string playerNameProperty { get { return PlayerPrefs.GetString(playerNameKey, "Guest"); } set { PlayerPrefs.SetString(playerNameKey, value); } }
     public bool isFirstGameProperty { get { if (PlayerPrefs.GetInt(firstGameKey, 1) == 1) return true; else return false; } set { if (value == true) PlayerPrefs.SetInt(firstGameKey, 1); else PlayerPrefs.SetInt(firstGameKey, 0); } }
+    public bool isFirstRetireProperty { get { return PlayerPrefs.GetInt(firstRetireKey, 1) == 1; } set { PlayerPrefs.SetInt(firstRetireKey, value ? 1 : 0); } }
     public List<string> unlockedRecipesProperty { get { return Util.GetListFromString(PlayerPrefs.GetString(unlockedRecipesKey, "")); } set { PlayerPrefs.SetString(unlockedRecipesKey, Util.GetStringFromList(value)); } }
     public List<string> availablePizzasProperty { get { return Util.GetListFromString(PlayerPrefs.GetString(availablePizzasKey, "")); } set { PlayerPrefs.SetString(availablePizzasKey, Util.GetStringFromList(value)); } }
     public int moneyProperty { get { return PlayerPrefs.GetInt(moneyKey, 0); } set { PlayerPrefs.SetInt(moneyKey, value); } }
@@ -187,6 +191,19 @@ public class Managers : MonoBehaviour
             PizzaIngredientSpriteDic.Add(pizzaImage.name, pizzaImage);
         }
 
+        pizzaDec = new Dictionary<int, string>();
+
+        pizzaDec.Add(0, "치즈 피자");
+        pizzaDec.Add(1, "페퍼로니 피자");
+        pizzaDec.Add(2, "베이컨 포테이토 피자");
+        pizzaDec.Add(3, "불고기 피자");
+        pizzaDec.Add(4, "옥수수 피자");
+        pizzaDec.Add(5, "페퍼로니&포테이토 반반 피자");
+        pizzaDec.Add(6, "포테이토&불고기 반반 피자");
+        pizzaDec.Add(7, "불고기&옥수수 반반 피자");
+        pizzaDec.Add(8, "콤비네이션 피자");
+
+
         //실험할 난이도
         Managers.s_managersProperty.stageNameStrProperty = "stage 1";
     }
@@ -239,5 +256,36 @@ public class Managers : MonoBehaviour
         {
             Debug.LogError("Cannot find json file!");
         }
+    }
+
+    public static bool[] GetAvaliablePizzaInBool(string stageName)
+    {
+        bool[] result = new bool[9];
+        for (int i = 0; i < 9; i++) result[i] = false;
+
+        LevelData currentLevelData = Managers.levelDataList.GetLevel(stageName);
+        if (currentLevelData.Cheese != 0) result[0] = true;
+        if (currentLevelData.Pepperoni != 0) result[1] = true;
+        if (currentLevelData.BaconPotato != 0) result[2] = true;
+        if (currentLevelData.Bulgogi != 0) result[3] = true;
+        if (currentLevelData.Corn != 0) result[4] = true;
+        if (currentLevelData.PepperoniAndBaconPotato != 0) result[5] = true;
+        if (currentLevelData.BaconPotatoAndBulgogi != 0) result[6] = true;
+        if (currentLevelData.BulgogiAndCorn != 0) result[7] = true;
+        if (currentLevelData.Combination != 0) result[8] = true;
+
+        return result;
+    }
+
+    public void ResetGameState()
+    {
+        playerNameProperty = "Guest";
+        isFirstGameProperty = true;
+        isFirstRetireProperty = true;
+        unlockedRecipesProperty = new List<string>();
+        availablePizzasProperty = new List<string>();
+        moneyProperty = 0;
+        dDayProperty = 1;
+        stageNameStrProperty = "stage 1";
     }
 }
