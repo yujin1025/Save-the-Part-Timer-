@@ -1,6 +1,6 @@
 # 구해줘 알바생
-
-![구해줘알바생](https://github.com/user-attachments/assets/0da77c27-44b3-417d-b293-aa170dde4235)
+<img src="https://github.com/user-attachments/assets/8fdb79de-601a-40bf-b28a-e658fbc2e1d2" width="300"/>
+<img src="https://github.com/user-attachments/assets/0da77c27-44b3-417d-b293-aa170dde4235" width="300"/>
 
 >23-2 Exp Make 학기 프로젝트
 
